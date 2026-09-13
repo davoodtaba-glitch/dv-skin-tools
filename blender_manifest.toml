@@ -1,0 +1,27 @@
+schema_version = "1.0.0"
+
+id = "dv_skin_tool"
+version = "0.8.26"
+name = "DV Skin Tools"
+tagline = "Maya-style multi-influence skinning brush for Blender"
+maintainer = "Davood Taba (davoodice@gmail.com)"
+type = "add-on"
+
+tags = ["Rigging", "Paint"]
+
+blender_version_min = "4.2.0"
+
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+[build]
+paths_exclude_pattern = [
+  "__pycache__/",
+  "/.git/",
+  "/*.zip",
+  "/tests/",
+  "/backups/",
+  "/*.log",
+  "/dv_skin_tool-*/",
+]
