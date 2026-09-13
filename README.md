@@ -61,6 +61,54 @@ DV Skin Tools paints **all deform influences together**, then re-normalizes — 
 | **Weight undo** | Ctrl+Z / Ctrl+Shift+Z for strokes, floods, and binds. Overlay colors follow the restored weights. |
 
 ---
+## Full List of features
+**Brush**
+- Modes: Smooth, Sharpen, Stitch, Replace, Add, Remove (each remembers its own Intensity)
+- Maya-style relative Smooth (neighbors stay proportional)
+- Flood (mesh or paint mask)
+- Interactive Mirror Paint (mirrored vert + mirrored bone)
+- Intensity, Iterations, Radius (auto-sized to the mesh)
+- Falloff: Smooth / Linear / Sphere / Constant
+- Neighbors: Surface or Volume (+ Volume Radius)
+- Only Existing Influences
+- Skip Border Edges, Sync Border Weights, Stitch Threshold
+- Projection: Surface or Screen
+- Target: All Deform or Selected Bones
+- Front Faces Only, Airbrush, tablet pressure, stamp Spacing
+- Max Influences cap, Prune tiny weights
+- Locked vertex groups always preserved
+- Ctrl while painting flips Smooth ↔ Sharpen
+- Hold Shift = temporary brush; F / Shift+F / [ ] resize; Esc/RMB exit
+- Auto geometry refresh when the posed mesh moves
+
+**Influences**
+- Bind Nearest (optional Selected-only + Mirror)
+- Remove Selected (strip weights, no redistribute)
+- Add Selected (creates groups; adds Armature modifier if missing)
+- Live Select; hold S add / hold D subtract; invert / deselect all
+- Searchable influence list (filter, sort, lock icons, list height)
+- All Bones: every deform bone in the scene, searchable
+
+**Mirror / transfer**
+- Mirror Skin Weights: +X→−X, −X→+X, or Heavier Side
+- Mirror Threshold, custom Mirror Pattern (R-arm, Arm_R, etc.)
+- Copy Skin Weights: one source or all other selected meshes
+- Surface: closest point or nearest vertex
+- Influence match: closest joint, name, or one-to-one
+- Normalize on/off; Remove Empty Groups
+- Export / Import per-vertex JSON (+ Maya script)
+
+**Display**
+- Show All Influences (Maya rainbow overlay)
+- Overlay Opacity, Wireframe overlay, Randomize Colors
+- Bone X-Ray, X-Ray All Bones (even hidden collections)
+- Overlay follows undo; Object Mode restores the mesh
+
+**Undo / workflow**
+- Weight undo/redo (Ctrl+Z / Ctrl+Shift+Z) for strokes, flood, bind
+- Enter Weight Paint from the panel
+- Assign shortcuts on toggles (X-Mirror, X-Ray, Show All)
+
 
 ## Install
 
