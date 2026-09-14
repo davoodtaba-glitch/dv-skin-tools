@@ -725,7 +725,8 @@ def _auto_exit_show_all(scene=None, depsgraph=None):
         return
 
     if mode == 'PAINT_WEIGHT' and bool(getattr(settings, "display_state_stashed", False)):
-        # Re-entering Weight Paint (default: Show All Influences on).
+        # Re-entering Weight Paint (default: Show All Influences on
+        # when the mesh has influences).
         def _enter():
             try:
                 from ..properties import restore_display_state
@@ -767,7 +768,8 @@ def _sync_load_post(_dummy=None):
 
 
 def _reset_show_all_after_load():
-    """Show All Influences defaults ON after a file open.
+    """Show All Influences defaults ON after a file open when the mesh
+    has influences. Empty meshes stay off so the overlay cannot hide them.
 
     The overlay's stashed hide/opacity references belong to the previous
     file, so the native display is restored first; then the default-on
@@ -779,6 +781,7 @@ def _reset_show_all_after_load():
     """
     import bpy as _bpy
 
+    from ..core.mesh_data import mesh_has_influences
     from ..properties import _settings_from
 
     ctx = _bpy.context
@@ -796,20 +799,17 @@ def _reset_show_all_after_load():
         except Exception:
             pass
         obj = getattr(ctx, "active_object", None)
-        can_show = (
-            obj is not None
-            and obj.type == 'MESH'
-            and getattr(ctx, "mode", None) != 'OBJECT'
-        )
+        has_inf = mesh_has_influences(obj)
+        can_show = has_inf and getattr(ctx, "mode", None) != 'OBJECT'
         try:
             if can_show:
                 settings.show_all_influences = True
-            else:
-                # Remember "on" for the next Weight Paint entry; the
-                # toggle itself must stay off in Object Mode.
+            elif has_inf:
                 settings.saved_show_all = True
                 settings.saved_wireframe = bool(settings.overlay_wireframe)
                 settings.display_state_stashed = True
+                settings.show_all_influences = False
+            else:
                 settings.show_all_influences = False
         except Exception:
             pass

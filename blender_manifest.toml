@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "dv_skin_tool"
-version = "0.8.26"
+version = "0.8.27"
 name = "DV Skin Tools"
 tagline = "Maya-style multi-influence skinning brush for Blender"
 maintainer = "Davood Taba (davoodice@gmail.com)"

@@ -62,26 +62,27 @@ def _boot_ui():
         _redraw_view3d()
     except Exception:
         pass
-    # Show All Influences defaults on (and is remembered across
-    # sessions of the brush), but the RNA default never fires the
-    # property's update callback — apply the native-heatmap hide once
-    # at startup so the display is consistent from the first frame.
+    # Show All Influences defaults on when the mesh has influences
+    # (and is remembered across sessions of the brush), but the RNA
+    # default never fires the property's update callback — apply the
+    # native-heatmap hide once at startup so the display is consistent
+    # from the first frame. Empty meshes keep the toggle off.
     try:
+        from ..core.mesh_data import mesh_has_influences
         from ..properties import _settings_from
 
         settings = _settings_from(bpy.context)
         obj = getattr(bpy.context, "active_object", None)
-        if (
-            settings is not None
-            and bool(settings.show_all_influences)
-            and not bool(settings.wp_opacity_stashed)
-            and obj is not None
-            and obj.type == 'MESH'
-            and bpy.context.mode == 'PAINT_WEIGHT'
-        ):
-            from .color_overlay import set_native_heatmap_hidden
+        if settings is not None and bool(settings.show_all_influences):
+            if not mesh_has_influences(obj):
+                settings.show_all_influences = False
+            elif (
+                not bool(settings.wp_opacity_stashed)
+                and bpy.context.mode == 'PAINT_WEIGHT'
+            ):
+                from .color_overlay import set_native_heatmap_hidden
 
-            set_native_heatmap_hidden(bpy.context, True)
+                set_native_heatmap_hidden(bpy.context, True)
     except Exception:
         pass
     return None

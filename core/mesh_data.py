@@ -65,6 +65,15 @@ def deform_group_indices(obj):
     return [vg.index for vg in obj.vertex_groups if vg.name in deform_names]
 
 
+def mesh_has_influences(obj):
+    if obj is None or obj.type != 'MESH':
+        return False
+    groups = getattr(obj, "vertex_groups", None)
+    if not groups:
+        return False
+    return bool(deform_group_indices(obj))
+
+
 def selected_group_mask(obj, group_indices, context=None):
     """Bool mask over `group_indices` for currently selected pose bones."""
     armature = _object_armature(obj)

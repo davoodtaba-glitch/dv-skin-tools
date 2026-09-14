@@ -487,8 +487,11 @@ def restore_display_state(context):
     settings = _settings_from(context)
     if settings is None or not settings.display_state_stashed:
         return
+    from .core.mesh_data import mesh_has_influences
+
     settings.display_state_stashed = False
-    settings.show_all_influences = bool(settings.saved_show_all)
+    obj = getattr(context, "active_object", None)
+    settings.show_all_influences = bool(settings.saved_show_all) and mesh_has_influences(obj)
     settings.overlay_wireframe = bool(settings.saved_wireframe)
 
 

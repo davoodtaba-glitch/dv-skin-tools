@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.27 — Show All Influences skip empty meshes
+
+- Show All Influences no longer turns on by default when the mesh has
+  no skin influences (the overlay would hide the mesh with nothing to
+  draw).
+
 ## 0.8.26 — Maya-style relative smooth
 
 - Smooth keeps relative weight transitions between neighboring vertices

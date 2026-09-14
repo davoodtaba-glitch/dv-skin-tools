@@ -1,7 +1,7 @@
 bl_info = {
     "name": "DV Skin Tools",
     "author": "Davood Taba <davoodice@gmail.com>",
-    "version": (0, 8, 26),
+    "version": (0, 8, 27),
     "blender": (4, 2, 0),
     "location": "3D Viewport > Weight Paint > Sidebar > DV Skin Tools",
     "description": "Maya-style multi-influence skinning: smooth, bind nearest, replace/add/remove",

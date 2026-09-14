@@ -222,7 +222,7 @@ def main():
         pdf,
         [
             "Edit > Preferences > Get Extensions (or Add-ons) > Install from Disk.",
-            "Choose dv_skin_tool-0.8.26.zip and enable DV Skin Tools.",
+            "Choose dv_skin_tool-0.8.27.zip and enable DV Skin Tools.",
             "If an older Skin Tools or DV Skin Tools add-on is installed, remove it first.",
         ],
     )
