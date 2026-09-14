@@ -26,6 +26,9 @@
 
 ---
 
+## Tutorials:
+https://www.youtube.com/playlist?list=PLUrd_Y4UuCw0
+
 ## Why DV Skin Tools
 
 Blender’s default Blur brush edits **one vertex group**. Production skinning does not work that way.
