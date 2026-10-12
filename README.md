@@ -11,7 +11,7 @@
 
 <p align="center">
   
-  <img alt="Version" src="https://img.shields.io/badge/Version-0.8.51-blue?style=for-the-badge">
+  <img alt="Version" src="https://img.shields.io/badge/Version-0.8.52-blue?style=for-the-badge">
   <img alt="Blender" src="https://img.shields.io/badge/Blender-4.2%2B-F5792A?style=for-the-badge&logo=blender&logoColor=white">
   <img alt="License" src="https://img.shields.io/badge/license-GPL--3.0-22C55E?style=for-the-badge">
   <img alt="Python" src="https://img.shields.io/badge/python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white">
